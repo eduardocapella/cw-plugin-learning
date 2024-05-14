@@ -1,0 +1,19 @@
+{
+    "name": "capella/cw-plugin-learning",
+    "description": "Capella First plugin with OOP and Composer",
+    "type": "library",
+    "require": {
+        "wp-coding-standards/wpcs": "^3.1"
+    },
+    "authors": [
+        {
+            "name": "Eduardo Capella",
+            "email": "eduardocapella@gmail.com"
+        }
+    ],
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    }
+}
