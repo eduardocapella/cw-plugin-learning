@@ -1,6 +1,6 @@
 <?php
 
-namespace CWPL\CPTs\Article;
+// namespace Cwpl\Article;
 
 class Article {
 
