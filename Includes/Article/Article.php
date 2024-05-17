@@ -1,6 +1,6 @@
 <?php
 
-// namespace Cwpl\Article;
+// namespace Cwpl\Includes\Article;
 
 class Article {
 
@@ -41,6 +41,9 @@ class Article {
         // Parameter 1 is a name for the post type
         // $args array goes in parameter 2.
         register_post_type( 'article', $args );
-    }
 
+        // add_action( 'init', array( $this, 'cw_cpt_articles' ) );
+    }
+    
 }
+

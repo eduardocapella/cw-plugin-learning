@@ -7,41 +7,34 @@
 **/
 
 // Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
+if ( ! defined( 'ABSPATH' ) ) { exit; }
+
+// Include Composer's Autoloader if file exist
+$autoload_file = dirname( __FILE__ ) . '/vendor/autoload.php';
+if( file_exists( $autoload_file ) ) {
+    require_once $autoload_file;
 }
 
-if( file_exists( dirname( __FILE__ ) . '/vendor/autoload.php' ) ) {
-    // Include Composer's autoloader
-    require_once dirname( __FILE__ ) . '/vendor/autoload.php';
-
-    // echo dirname( __FILE__ ) . '/vendor/autoload.php';
-    // echo "<script>console.log( 'Carregou!!' );</script>";
-}
-
-use Cwpl\Includes\Article\Article;
+// use Cwpl\Includes\Article\Article;
 // use Cwpl\Capella;
 
-// $capella = new Article();
+require_once 'includes/article/Article.php';
 
-require_once 'Includes/Article/Article.php';
+// $the_article = new Article();
 
-define( 'WP_USE_THEMES', false );
 // if the class exists create a new instance of this class
 if ( class_exists( 'Article' ) ) {
-    // $the_article = new Article();
-    // print_r( $the_article );
-    echo "<h1>Class Article loaded!</h1>";
+    $the_article = new Article();
+    // $the_article->cw_cpt_articles();
+    
+    add_action( 'admin_notices', function() { echo '<h1>Class Article loaded!</h1>'; } );
 } else {
-    echo "<h1>DOESN'T WORK!</h1>";
+    add_action( 'admin_notices', function() { echo "<h1>DOESN'T WORK!</h1>"; } );
 }
 
 // register_activation_hook( __FILE__, [ $the_article, 'activate' ] );
 
 // register_deactivation_hook( __FILE__, [ $the_article, 'deactivate' ] );
-
-
-
 
 
 // function cw_testing_hooks() {
