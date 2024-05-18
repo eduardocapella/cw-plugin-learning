@@ -41,3 +41,23 @@ if ( class_exists( 'Article' ) ) {
 //     echo '<h1>Testing!!!</h1>';
 // }
 // add_action( 'in_admin_header', __NAMESPACE__ . '\cw_testing_hooks', 1 );
+
+
+
+function pluginprefix_deactivate() {
+	// Unregister the post type, so the rules are no longer in memory.
+	unregister_post_type( 'article' );
+
+	// Clear the permalinks to remove our post type's rules from the database.
+	flush_rewrite_rules();
+}
+register_deactivation_hook( __FILE__, 'pluginprefix_deactivate' );
+
+
+
+
+function cwpl_enqueue_scripts() {
+    wp_enqueue_script( 'my-js', plugin_dir_url( __FILE__ ) . 'includes/js/script.js', array( 'jquery' ), false );
+}
+    
+add_action( 'wp_enqueue_scripts', 'cwpl_enqueue_scripts' );

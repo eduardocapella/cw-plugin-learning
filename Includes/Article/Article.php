@@ -34,7 +34,8 @@ class Article {
             'has_archive'       => true,
             'show_in_admin_bar' => true,
             'show_in_nav_menus' => true,
-            'has_archive'       => true
+            'has_archive'       => true,
+            'menu_icon'         => 'dashicons-media-document'
         );
         
         // Call the actual WordPress function
