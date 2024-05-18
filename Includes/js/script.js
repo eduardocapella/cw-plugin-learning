@@ -19,7 +19,7 @@ jQuery(document).ready(function($) {
         
         console.log( $title, $title_slugfied, $url, $copyText );
 
-        $(this).append( '<a href="'+ $copyText + '" style="display:inline-block; min-width:20px;min-height:20px; background-color=black"><img src="' + $site_url + '/plugins-tests/wp-content/plugins/cw-plugin-learning/includes/img/cwpl-copy-url-link.svg" ></a> ');
+        $(this).append( '<a href="'+ $copyText + '" class="cwpl-h3-link-icon"><img src="' + $site_url + '/plugins-tests/wp-content/plugins/cw-plugin-learning/includes/img/cwpl-copy-url-link.svg" ></a> ');
 
         $(this).click(function(e) {
             e.preventDefault();

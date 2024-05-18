@@ -1,0 +1,13 @@
+.cwpl-h3-link-icon {
+    display:inline-block;
+    min-width:1rem;
+    min-height:1rem;
+    margin-left: .75rem;
+}
+
+h3 > a.cwpl-h3-link-icon {
+    display: none;
+}
+h3:hover > a.cwpl-h3-link-icon {
+    display: inline-block;
+}

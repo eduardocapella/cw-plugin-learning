@@ -57,7 +57,12 @@ register_deactivation_hook( __FILE__, 'pluginprefix_deactivate' );
 
 
 function cwpl_enqueue_scripts() {
-    wp_enqueue_script( 'my-js', plugin_dir_url( __FILE__ ) . 'includes/js/script.js', array( 'jquery' ), false );
+    wp_enqueue_script( 'cwpl-js', plugin_dir_url( __FILE__ ) . 'includes/js/script.js', array( 'jquery' ), '1.0.0', false );
 }
-    
 add_action( 'wp_enqueue_scripts', 'cwpl_enqueue_scripts' );
+
+
+function cwpl_enqueue_styles() {
+    wp_enqueue_style( 'cwpl-css', plugin_dir_url( __FILE__ ) . 'includes/css/style.css', '1.0.0', false );
+}
+add_action( 'wp_enqueue_scripts', 'cwpl_enqueue_styles' );
