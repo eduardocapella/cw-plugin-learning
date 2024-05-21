@@ -1,6 +1,10 @@
 <?php
 
-// namespace Cwpl\Includes\Article;
+// Criamos um novo Namespace para todas as Classes. 
+// As Classes estão organizadas na pasta classes e por isso criamos o namespace com esse nome
+// O nome do Namespace não deve ter o nome da classe
+// No arquivo em que importamos a classe, aí sim deve conter o Namespace e o nome da Classe. Basta usar a extensão PHP resolver clicando com o botão direito para importar automaticamente a classe. Isso minimiza a chance de dar erro
+namespace Cwpl\Classes;
 
 class Article {
 

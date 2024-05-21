@@ -1,28 +1,36 @@
 jQuery(document).ready(function($) {
     
-    $headings = $( 'body' ).find( 'h3' );
-    // console.log( $headings );
+    // get JSON url
+    var WpJsonUrl = document.querySelector( 'link[rel="https://api.w.org/"]' ).href;
+    // then take out the '/wp-json/' part
+    var homeurl = WpJsonUrl.replace( '/wp-json/','' );
 
+    // find every <h3> element within the page
+    $headings = $( 'body' ).find( 'h3' );
+
+    // remove any IDs in the URL
     $url = $(location).attr( 'href').split('#')[0];
-    $site_url = $(location).attr( "origin" );
-    console.log('$url', $url, $site_url);
 
     $headings.each(function(i) {
 
-        let $title = $(this).text();
-        
-        let $slug = slugify( $title );
+        // check if <h3> already has an ID.
+        // if doesn't, create one from its content
+        if ( ! $(this).is('[id]') ) {
+            let $title = $(this).text();
+            var $slug = slugify( $title );
+            $(this).attr( 'id', $slug );
+        } else {
+            var $slug = $(this).attr( 'id' );
+        }
 
-        $(this).attr( 'id', $slug );
-
+        // text to be copied is the URL with the string added after it
         let $copyText = $url + '#' + $slug;
-        
-        console.log( $title, $title_slugfied, $url, $copyText );
 
-        $(this).append( '<button class="cwpl-h3-link-icon"><img src="' + $site_url + '/plugins-tests/wp-content/plugins/cw-plugin-learning/includes/img/cwpl-copy-url-link.svg" ></button> ');
+        // create the copy URL button within the <h3> heading
+        $(this).append( '<button class="cwpl-h3-link-icon"><img src="' + homeurl + '/wp-content/plugins/cw-plugin-learning/includes/img/cwpl-copy-url-link.svg"></button> ');
 
+        // copy the text when clicked
         $(this).click(function(e) {
-            e.preventDefault();
             navigator.clipboard.writeText( $copyText );
         })
 
